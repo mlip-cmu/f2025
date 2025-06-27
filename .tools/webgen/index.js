@@ -176,7 +176,7 @@ const html = `<!DOCTYPE html>
           <a class="navbar-item" href="#schedule">Schedule</a>
           <a class="navbar-item" href="#course-syllabus-and-policies">Syllabus</a>
           <a class="navbar-item" href="">Canvas</a>
-          <a class="navbar-item" href="https://github.com/YOUR_GITHUB_REPO" target="_blank" rel="noopener">
+          <a class="navbar-item" href="https://github.com/mlip-cmu/f2025" target="_blank" rel="noopener">
             <span class="icon">
               <i class="fab fa-github"></i>
             </span>
