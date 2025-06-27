@@ -17,7 +17,7 @@ const [mdPath, schedulePath] = args;
 let mdContent = '';
 try {
     const scheduleContent = fs.readFileSync(schedulePath, 'utf-8');
-    mdContent = fs.readFileSync(mdPath, 'utf-8').replace("[SCHEDULE]", scheduleContent);
+    mdContent = fs.readFileSync(mdPath, 'utf-8').replace("[Schedule]", scheduleContent);
 } catch (error) {
     console.error(`Error: File not found or cannot be read: ${error.path}`);
     process.exit(1);
