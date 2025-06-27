@@ -1,37 +1,68 @@
-
 <!DOCTYPE html>
-<html lang="en-US">
-  <head>
-    <meta charset='utf-8'>
-    <title>17-445 Machine Learning in Production / AI Engineering</title>
-    <style type="text/css">
-    
-      @import url("https://fonts.googleapis.com/css?family=Chivo:900");.highlight table td{padding:5px}.highlight table pre{margin:0}.highlight,.highlight .w{color:#d0d0d0}.highlight .err{color:#151515;background-color:#ac4142}.highlight .c,.highlight .cd,.highlight .cm,.highlight .c1,.highlight .cs{color:#888}.highlight .cp{color:#f4bf75}.highlight .nt{color:#f4bf75}.highlight .o,.highlight .ow{color:#d0d0d0}.highlight .p,.highlight .pi{color:#d0d0d0}.highlight .gi{color:#90a959}.highlight .gd{color:#ac4142}.highlight .gh{color:#6a9fb5;font-weight:bold}.highlight .k,.highlight .kn,.highlight .kp,.highlight .kr,.highlight .kv{color:#aa759f}.highlight .kc{color:#d28445}.highlight .kt{color:#d28445}.highlight .kd{color:#d28445}.highlight .s,.highlight .sb,.highlight .sc,.highlight .sd,.highlight .s2,.highlight .sh,.highlight .sx,.highlight .s1{color:#90a959}.highlight .sr{color:#75b5aa}.highlight .si{color:#8f5536}.highlight .se{color:#8f5536}.highlight .nn{color:#f4bf75}.highlight .nc{color:#f4bf75}.highlight .no{color:#f4bf75}.highlight .na{color:#6a9fb5}.highlight .m,.highlight .mf,.highlight .mh,.highlight .mi,.highlight .il,.highlight .mo,.highlight .mb,.highlight .mx{color:#90a959}.highlight .ss{color:#90a959}html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{font:inherit;font-size:100%;vertical-align:baseline;border:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-spacing:0;border-collapse:collapse}body{font-family:'Helvetica Neue', Helvetica, Arial, serif;font-size:1em;line-height:1.5;text-shadow:0 1px 0 rgba(255,255,255,0.8);}a{color:#d5000d}a:hover{color:#c5000c}h1{padding-top:35px} h1{font-family:'Chivo', 'Helvetica Neue', Helvetica, Arial, serif;font-size:48px;font-weight:900;line-height:1.2;color:#303030;letter-spacing:-1px} #cmu-17-445645-fall-2020 {font-size:24px;font-weight:normal;line-height:1.3;color:#aaa;letter-spacing:-1px}#container{min-height:595px;background:transparent url(../images/highlight-bg.jpg) 50% 0 no-repeat}.inner{width:620px;margin:0 auto}#container .inner img{max-width:100%}#downloads{margin-bottom:40px}a.button{display:block;float:left;width:179px;padding:12px 8px 12px 8px;margin-right:14px;font-size:15px;font-weight:bold;line-height:25px;color:#303030;background:#fdfdfd;background:-moz-linear-gradient(top, #fdfdfd 0%, #f2f2f2 100%);background:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #fdfdfd), color-stop(100%, #f2f2f2));background:-webkit-linear-gradient(top, #fdfdfd 0%, #f2f2f2 100%);background:-o-linear-gradient(top, #fdfdfd 0%, #f2f2f2 100%);background:-ms-linear-gradient(top, #fdfdfd 0%, #f2f2f2 100%);background:linear-gradient(to top, #fdfdfd 0%, #f2f2f2 100%);filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdfdfd', endColorstr='#f2f2f2',GradientType=0 );border-top:solid 1px #cbcbcb;border-right:solid 1px #b7b7b7;border-bottom:solid 1px #b3b3b3;border-left:solid 1px #b7b7b7;border-radius:30px;-webkit-box-shadow:10px 10px 5px #888;-moz-box-shadow:10px 10px 5px #888;box-shadow:0px 1px 5px #e8e8e8;-moz-border-radius:30px;-webkit-border-radius:30px}a.button:hover{background:#fafafa;background:-moz-linear-gradient(top, #fdfdfd 0%, #f6f6f6 100%);background:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #fdfdfd), color-stop(100%, #f6f6f6));background:-webkit-linear-gradient(top, #fdfdfd 0%, #f6f6f6 100%);background:-o-linear-gradient(top, #fdfdfd 0%, #f6f6f6 100%);background:-ms-linear-gradient(top, #fdfdfd 0%, #f6f6f6 100%);background:linear-gradient(to top, #fdfdfd 0%, #f6f6f6, 100%);filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdfdfd', endColorstr='#f6f6f6',GradientType=0 );border-top:solid 1px #b7b7b7;border-right:solid 1px #b3b3b3;border-bottom:solid 1px #b3b3b3;border-left:solid 1px #b3b3b3}a.button span{display:block;height:23px;padding-left:50px}#download-zip span{background:transparent url(../images/zip-icon.png) 12px 50% no-repeat}#download-tar-gz span{background:transparent url(../images/tar-gz-icon.png) 12px 50% no-repeat}#view-on-github span{background:transparent url(../images/octocat-icon.png) 12px 50% no-repeat}#view-on-github{margin-right:0}code,pre{margin-bottom:30px;font-family:Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal;font-size:14px;color:#222}code{padding:0 3px;background-color:#f2f2f2;border:solid 1px #ddd}pre{padding:20px;overflow:auto;color:#f2f2f2;text-shadow:none;background:#303030}pre code{padding:0;color:#f2f2f2;background-color:#303030;border:none}ul,ol,dl{margin-bottom:20px}hr{height:1px;padding-bottom:1em;margin-top:1em;line-height:1px;background:transparent url("../images/hr.png") 50% 0 no-repeat;border:none}strong{font-weight:bold}em{font-style:italic}table{width:100%;border:1px solid #ebebeb}th{font-weight:500}td{font-weight:300;border:1px solid #ebebeb}form{padding:20px;background:#f2f2f2}h2{margin-bottom:8px;font-size:22px;font-weight:bold;color:#303030}h3{margin-bottom:8px;font-size:18px;font-weight:bold;color:#d5000d}h4{font-size:16px;font-weight:bold;color:#303030}h5{font-size:1em;color:#303030}h6{font-size:.8em;color:#303030}p{margin-bottom:20px;font-weight:300}a{text-decoration:none}p a{font-weight:400}blockquote{padding:0 0 0 30px;margin-bottom:20px;font-size:1.6em;border-left:10px solid #e9e9e9}ul li{list-style-position:inside;list-style:disc;}ol li{list-style-position:inside;list-style:decimal;padding-left:3px}dl dt{color:#303030}footer{padding-top:20px;padding-bottom:30px;margin-top:40px;font-size:13px;color:#aaa;background:transparent url("../images/hr.png") 0 0 no-repeat}footer a{color:#666}footer a:hover{color:#444}.clearfix:after{display:block;height:0;clear:both;visibility:hidden;content:'.'}.clearfix{display:inline-block}* html .clearfix{height:1%}.clearfix{display:block}@media only screen and (max-width: 767px){header{padding-top:10px;padding-bottom:10px}#downloads{margin-bottom:25px}#download-zip,#download-tar-gz{display:none}.inner{width:94%;margin:0 auto}}
-      td {padding:4px;border-bottom:2px solid #dddddd;}
-      th {border-top: 1px solid black; border-bottom: 1px solid black;}
-      tr:nth-child(even) {
-        background-color: #eeeeee
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Machine Learning in Production</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body {
+      font-size: 1.5rem;
+      background: #fafafa;
+      font-family: 'Roboto', Arial, sans-serif;
+    }
+    .container {
+      max-width: 900px; 
+    }
+    @media (min-width: 1500px) {
+      nav .navbar-brand .navbar-item {
+        font-size: 4rem;
       }
-      table{margin-bottom: 8px}
-    </style>
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
-    <div id="container">
-      <div class="inner">
-
-        <section id="main_content">
-
-<h1>Machine Learning in Production (17-445/17-645/17-745)</h1>
-<h3>Fall 2025</h3>
-<p><em>CMU course that covers how to build, deploy, assure, and maintain software products with machine-learned models. Includes the entire lifecycle from a prototype ML model to an entire system deployed in production. Covers also <strong>responsible AI</strong> (including safety, security, fairness, explainability) and <strong>MLOps</strong>. For earlier offerings see websites for <a href="https://ckaestne.github.io/seai/F2019">Fall 2019</a>, <a href="https://ckaestne.github.io/seai/S2020">Summer 2020</a>, <a href="https://ckaestne.github.io/seai/F2020/">Fall 2020</a>, <a href="https://ckaestne.github.io/seai/S2021/">Spring 2021</a>  <a href="https://ckaestne.github.io/seai/S2022/">Spring 2022</a>, <a href="https://ckaestne.github.io/seai/F2022/">Fall 2022</a>, <a href="https://github.com/mlip-cmu/s2023">Spring 2023</a>, <a href="https://github.com/mlip-cmu/s2024">Spring 2024</a>,  <a href="https://github.com/mlip-cmu/f2024">Fall 2024</a>, and <a href="https://github.com/mlip-cmu/s2025">Spring 2025</a>. This Fall 2025 offering is designed for students with some data science experience (e.g., has taken a machine learning course, has used sklearn) and basic programming skills (e.g., basic Python programming with libraries, can navigate a Unix shell), but will not expect a software engineering background (i.e., experience with testing, requirements, architecture, process, or teams is not required). Going forward we expect to offer this course at least every spring semester and possibly some fall semesters (not summer semesters).</em></p>
+    }
+    html { scroll-behavior: smooth; }
+    main { margin-top: 2rem; }
+  </style>
+</head>
+<body>
+  <nav class="navbar is-danger" role="navigation" aria-label="main navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="#">
+          <strong>Machine Learning in Production</strong><br />
+        </a>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div id="navbarBasic" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="#course-content">Schedule</a>
+          <a class="navbar-item" href="#course-syllabus-and-policies">Syllabus</a>
+          <a class="navbar-item" href="">Canvas</a>
+          <a class="navbar-item" href="https://github.com/YOUR_GITHUB_REPO" target="_blank" rel="noopener">
+            <span class="icon">
+              <i class="fab fa-github"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <main class="container">
+    <h1>Machine Learning in Production (17-445/17-645/17-745)</h1><h3 class="is-size-4">Fall 2025</h3><p><em>CMU course that covers how to build, deploy, assure, and maintain software products with machine-learned models. Includes the entire lifecycle from a prototype ML model to an entire system deployed in production. Covers also <strong>responsible AI</strong> (including safety, security, fairness, explainability) and <strong>MLOps</strong>. For earlier offerings see websites for <a href="https://ckaestne.github.io/seai/F2019">Fall 2019</a>, <a href="https://ckaestne.github.io/seai/S2020">Summer 2020</a>, <a href="https://ckaestne.github.io/seai/F2020/">Fall 2020</a>, <a href="https://ckaestne.github.io/seai/S2021/">Spring 2021</a>  <a href="https://ckaestne.github.io/seai/S2022/">Spring 2022</a>, <a href="https://ckaestne.github.io/seai/F2022/">Fall 2022</a>, <a href="https://github.com/mlip-cmu/s2023">Spring 2023</a>, <a href="https://github.com/mlip-cmu/s2024">Spring 2024</a>,  <a href="https://github.com/mlip-cmu/f2024">Fall 2024</a>, and <a href="https://github.com/mlip-cmu/s2025">Spring 2025</a>. This Fall 2025 offering is designed for students with some data science experience (e.g., has taken a machine learning course, has used sklearn) and basic programming skills (e.g., basic Python programming with libraries, can navigate a Unix shell), but will not expect a software engineering background (i.e., experience with testing, requirements, architecture, process, or teams is not required). Going forward we expect to offer this course at least every spring semester and possibly some fall semesters (not summer semesters).</em></p>
 <hr>
 <p>For researchers, educators, or others interested in this topic, we share all course material, including slides and assignments, under a creative commons license on GitHub (<a href="https://github.com/mlip-cmu">https://github.com/mlip-cmu</a>) and have also published a <a href="https://mlip-cmu.github.io/book/">textbook</a> with chapters corresponding to almost every lecture. A while ago we also wrote an article describing the rationale and the initial design of this course: <a href="https://arxiv.org/abs/2001.06691">Teaching Software Engineering for AI-Enabled Systems</a>. Video recordings of the Summer 2020 offering are online on the <a href="https://ckaestne.github.io/seai/S2020/#course-content">course page</a>, though they are quite outdated by now. We would be happy to see this course or a similar version taught at other universities. See also an <a href="https://github.com/ckaestne/seaibib">annotated bibliography</a> on research in this field.</p>
-<h2>Course Description</h2>
-<p>This is a course for those who want to build <strong>software products</strong> with <strong>machine learning</strong>, not just models and demos. We assume that you can train a model or build prompts to make predictions, but what does it take to turn the model into a product and actually deploy it, have confidence in its quality, and successfully operate and maintain it at scale? </p>
+
+    
+    <section class="section" id="course-description">
+      <div class="card">
+        <div class="card-content">
+          <h2 class="title is-2 has-text-danger">Course Description</h2>
+          <div class="content">
+          <p>This is a course for those who want to build <strong>software products</strong> with <strong>machine learning</strong>, not just models and demos. We assume that you can train a model or build prompts to make predictions, but what does it take to turn the model into a product and actually deploy it, have confidence in its quality, and successfully operate and maintain it at scale? </p>
 <p>The course is designed to establish a working relationship between <strong>software engineers</strong> and <strong>data scientists</strong>: both contribute to building ML-enabled systems but have different expertise and focuses. To work together they need a mutual understanding of their roles, tasks, concerns, and goals and build a working relationship. This course is aimed at <strong>software engineers</strong> who want to build robust and responsible products meeting the specific challenges of working with ML components and at <strong>data scientists</strong> who want to understand the requirements of the model for production use and want to facilitate getting a prototype model into production; it facilitates communication and collaboration between both roles. The course is a good fit for student looking at a career as an <strong>ML engineer</strong>. <em>The course focuses on all the steps needed to turn a model into a production system in a responsible and reliable manner.</em></p>
 <p><img src="overview.svg" alt="Course overview"></p>
 <p>It covers topics such as:</p>
@@ -45,8 +76,7 @@
 </ul>
 <p><strong>Examples and case studies</strong> of ML-driven products we discuss include automated audio transcription; distributed detection of missing children on webcams and instant translation in augmented reality; cancer detection, fall detection, COVID diagnosis, and other smart medical and health services; automated slide layout in Powerpoint; semi-automated college admissions; inventory management; smart playlists and movie recommendations; ad fraud detection; delivery robots and smart driving features; and many others.</p>
 <p>An extended group project focuses on building, deploying, evaluating, and maintaining a robust and scalable <em>movie recommendation service</em> under somewhat realistic “production” conditions with 1 million users.</p>
-<h3>Learning Outcomes</h3>
-<p>After taking this course, among others, students should be able to</p>
+<h3 class="is-size-4">Learning Outcomes</h3><p>After taking this course, among others, students should be able to</p>
 <ul>
 <li>responsibly turn prototypes into production-ready software products, whether traditional ML, LLMs, or agents,</li>
 <li>consider risks and plan for mistakes in ML components and implement production-quality systems that are robust to those mistakes</li>
@@ -58,355 +88,53 @@
 <li>communicate effectively in interdisciplinary teams</li>
 </ul>
 <p>In addition, students will gain familiarity with production-quality infrastructure tools, including stream processing with Apache Kafka, test automation with Jenkins, monitoring and experiment tracking with Prometheus, Grafana, and MLFlow, and deployment with Docker and various MLOps tools.</p>
-<h2>Logistics and People</h2>
-<p>17-445/17-645/17-745, 12 Units</p>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  
+
+    <section class="section" id="logistics-and-people">
+      <div class="card">
+        <div class="card-content">
+          <h2 class="title is-2 has-text-danger">Logistics and People</h2>
+          <div class="content">
+          <p>17-445/17-645/17-745, 12 Units</p>
 <p>The course is the same under all course numbers, except for the PhD-level 17-745 number, which replaces two homework assignments with a mandatory <a href="https://github.com/mlip-cmu/f2025/blob/main/assignments/research_project.md">research project</a>.</p>
 <p>Open to all undergraduate and graduate students meeting the prerequisites. In-person offering only, no remote option.</p>
-<h3>Spring 2025</h3>
-<p>Lectures Monday/Wednesday 3:30-4:50pm, in person, PH 100</p>
+<h3 class="is-size-4">Spring 2025</h3><p>Lectures Monday/Wednesday 3:30-4:50pm, in person, PH 100</p>
 <p>Labs Friday 9:30-10:50am in Wean 4709 (B) and 11-12:20pm in PH A22 (C) and GHC 4102 (D) and 2-3:20 in PH 226C (E) and PH A21 (F). </p>
 <p>Instructors: <a href="https://www.cs.cmu.edu/~ckaestne/">Christian Kaestner</a> and <a href="https://bvasiles.github.io">Bogdan Vasilescu</a></p>
 <p>TAs: Kaushik Koirala, Krishnaprasad Vijayshankar, Michelle Wang, Bhuvana Murugadoss, and Nikita Chaudhari</p>
-<h3>Coordination</h3>
-<p>We are happy to answer questions by email and over Slack, meet in person, and will jump on a quick Zoom call if you ask us. We also always arrive 5 to 10 min early to class and stay longer for discussions and questions. If you have questions about assignments and logistics, we prefer that you ask them publicly on Slack.</p>
-<h2>Course content</h2>
-<p>This year we plan a couple of updates regarding AI agents and risk managements and emerging tooling. Our list of learning goals under <a href="https://github.com/mlip-cmu/f2025/blob/main/learning_goals.md">Learning Goals</a> describes what we aim to cover. Below is a table of a preliminary schedule. We expect the schedule to stay fairly stable, but there may be a couple of smaller changes as the semester progresses.</p>
+<h3 class="is-size-4">Coordination</h3><p>We are happy to answer questions by email and over Slack, meet in person, and will jump on a quick Zoom call if you ask us. We also always arrive 5 to 10 min early to class and stay longer for discussions and questions. If you have questions about assignments and logistics, we prefer that you ask them publicly on Slack.</p>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  
+
+    <section class="section" id="course-content">
+      <div class="card">
+        <div class="card-content">
+          <h2 class="title is-2 has-text-danger">Course content</h2>
+          <div class="content">
+          <p>This year we plan a couple of updates regarding AI agents and risk managements and emerging tooling. Our list of learning goals under <a href="https://github.com/mlip-cmu/f2025/blob/main/learning_goals.md">Learning Goals</a> describes what we aim to cover. Below is a table of a preliminary schedule. We expect the schedule to stay fairly stable, but there may be a couple of smaller changes as the semester progresses.</p>
 <p>[Schedule]</p>
-<table>
-<thead>
-<tr>
-<th>Date</th>
-<th>Topic</th>
-<th><a href="https://mlip-cmu.github.io/book/">Book Chapter</a></th>
-<th>Reading</th>
-<th>Assignment due</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Mon, Aug 25</td>
-<td>Introduction and Motivation</td>
-<td><a href="https://mlip-cmu.github.io/book/01/">1</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Wed, Aug 27</td>
-<td>Correctness and Risk</td>
-<td><a href="https://mlip-cmu.github.io/book/02/">2</a>,<a href="https://mlip-cmu.github.io/book/04/">4</a>,<a href="https://mlip-cmu.github.io/book/05/">5</a></td>
-<td><a href="https://cmu.primo.exlibrisgroup.com/permalink/01CMU_INST/6lpsnm/alma991019649190004436">Building Intelligent Systems</a>, Ch. 4, 5, 7, 8</td>
-<td></td>
-</tr>
-<tr>
-<td>Fri, Aug 29</td>
-<td><img src="https://img.shields.io/badge/-lab-yellow.svg" alt="Lab"> <a href="https://github.com/mlip-cmu/f2025/blob/main/labs/lab01.md">Calling, securing, and creating APIs: Flask</a></td>
-<td><a href="https://mlip-cmu.github.io/book/00/"></a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Mon, Sep 1</td>
-<td><img src="https://img.shields.io/badge/-break-red.svg" alt="Break"> Labor day, no classes</td>
-<td><a href="https://mlip-cmu.github.io/book/00/"></a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Wed, Sep 3</td>
-<td>Gathering Requirements</td>
-<td><a href="https://mlip-cmu.github.io/book/06/">6</a></td>
-<td><a href="https://scholar.google.com/scholar?cluster=1090758480873197042">The World and the Machine</a></td>
-<td></td>
-</tr>
-<tr>
-<td>Fri, Sep 5</td>
-<td><img src="https://img.shields.io/badge/-lab-yellow.svg" alt="Lab"> Stream processing: Apache Kafka</td>
-<td><a href="https://mlip-cmu.github.io/book/00/"></a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Mon, Sep 8</td>
-<td>Planning for Mistakes</td>
-<td><a href="https://mlip-cmu.github.io/book/07/">7</a></td>
-<td><a href="https://cmu.primo.exlibrisgroup.com/permalink/01CMU_INST/6lpsnm/alma991019649190004436">Building Intelligent Systems</a>, Ch. 6, 8, 24</td>
-<td><a href="https://github.com/mlip-cmu/f2024/blob/main/assignments/I1_mlproduct.md">I1: ML Product</a></td>
-</tr>
-<tr>
-<td>Wed, Sep 10</td>
-<td>Model Quality</td>
-<td><a href="https://mlip-cmu.github.io/book/15/">15</a></td>
-<td><a href="https://cmu.primo.exlibrisgroup.com/permalink/01CMU_INST/6lpsnm/alma991019649190004436">Building Intelligent Systems</a>, Ch. 19</td>
-<td></td>
-</tr>
-<tr>
-<td>Fri, Sep 12</td>
-<td><img src="https://img.shields.io/badge/-lab-yellow.svg" alt="Lab"> Collaboration with git</td>
-<td><a href="https://mlip-cmu.github.io/book/00/"></a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Mon, Sep 15</td>
-<td>Fostering Interdisciplinary (Student) Teams</td>
-<td><a href="https://mlip-cmu.github.io/book/00/"></a></td>
-<td><a href="https://third-bit.com/2018/05/11/meetings/">Meetings</a></td>
-<td><a href="https://github.com/mlip-cmu/f2024/blob/main/assignments/I2_requirements.md">I2: Requirements</a></td>
-</tr>
-<tr>
-<td>Wed, Sep 17</td>
-<td>Behavioral Model Testing</td>
-<td><a href="https://mlip-cmu.github.io/book/15/">15</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Fri, Sep 19</td>
-<td><img src="https://img.shields.io/badge/-lab-yellow.svg" alt="Lab"> Model testing</td>
-<td><a href="https://mlip-cmu.github.io/book/00/"></a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Mon, Sep 22</td>
-<td>Toward Architecture and Design</td>
-<td><a href="https://mlip-cmu.github.io/book/08/">8</a>,<a href="https://mlip-cmu.github.io/book/09/">9</a>,<a href="https://mlip-cmu.github.io/book/11/">11</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Wed, Sep 24</td>
-<td>Deploying a Model</td>
-<td><a href="https://mlip-cmu.github.io/book/10/">10</a></td>
-<td><a href="https://cmu.primo.exlibrisgroup.com/permalink/01CMU_INST/6lpsnm/alma991019649190004436">Building Intelligent Systems</a>, Ch. 13 and <a href="https://cmu.primo.exlibrisgroup.com/permalink/01CMU_INST/1feg4j8/alma991019735160604436">Machine Learning Design Patterns</a>, Pat. 16</td>
-<td></td>
-</tr>
-<tr>
-<td>Fri, Sep 26</td>
-<td><img src="https://img.shields.io/badge/-lab-yellow.svg" alt="Lab"> Containers: Docker</td>
-<td><a href="https://mlip-cmu.github.io/book/00/"></a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Mon, Sep 29</td>
-<td>Testing and Experimenting in Production</td>
-<td><a href="https://mlip-cmu.github.io/book/19/">19</a></td>
-<td></td>
-<td><a href="https://github.com/mlip-cmu/f2024/blob/main/assignments/project.md">M1: Modeling and First Deployment</a></td>
-</tr>
-<tr>
-<td>Wed, Oct 1</td>
-<td>Data Quality</td>
-<td><a href="https://mlip-cmu.github.io/book/16/">16</a></td>
-<td><a href="https://dl.acm.org/doi/abs/10.1145/3411764.3445518">Data Cascades in High-Stakes AI</a></td>
-<td></td>
-</tr>
-<tr>
-<td>Fri, Oct 3</td>
-<td><img src="https://img.shields.io/badge/-lab-yellow.svg" alt="Lab"> Continuous Integration: Jenkins</td>
-<td><a href="https://mlip-cmu.github.io/book/00/"></a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Mon, Oct 6</td>
-<td>Automating and Testing ML Pipelines</td>
-<td><a href="https://mlip-cmu.github.io/book/11/">11</a>,<a href="https://mlip-cmu.github.io/book/18/">18</a>,<a href="https://mlip-cmu.github.io/book/19/">19</a></td>
-<td><a href="https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/46555.pdf">The ML Test Score</a></td>
-<td></td>
-</tr>
-<tr>
-<td>Wed, Oct 8</td>
-<td><img src="https://img.shields.io/badge/-midterm-blue.svg" alt="Midterm"> Midterm 1</td>
-<td><a href="https://mlip-cmu.github.io/book/00/"></a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Fri, Oct 10</td>
-<td><img src="https://img.shields.io/badge/-break-red.svg" alt="Break"> No lab (happy fall break)</td>
-<td><a href="https://mlip-cmu.github.io/book/00/"></a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Mon, Oct 13</td>
-<td><img src="https://img.shields.io/badge/-break-red.svg" alt="Break"> Fall break, no classes</td>
-<td><a href="https://mlip-cmu.github.io/book/00/"></a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Wed, Oct 15</td>
-<td><img src="https://img.shields.io/badge/-break-red.svg" alt="Break"> Fall break, no classes</td>
-<td><a href="https://mlip-cmu.github.io/book/00/"></a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Fri, Oct 17</td>
-<td><img src="https://img.shields.io/badge/-break-red.svg" alt="Break"> Fall break, no classes</td>
-<td><a href="https://mlip-cmu.github.io/book/00/"></a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Mon, Oct 20</td>
-<td>Scaling the System</td>
-<td><a href="https://mlip-cmu.github.io/book/12/">12</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Wed, Oct 22</td>
-<td>Planning for Operations</td>
-<td><a href="https://mlip-cmu.github.io/book/13/">13</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Fri, Oct 24</td>
-<td><img src="https://img.shields.io/badge/-lab-yellow.svg" alt="Lab"> Monitoring: Prometheus, Grafana</td>
-<td><a href="https://mlip-cmu.github.io/book/00/"></a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Mon, Oct 27</td>
-<td>Versioning, Provenance, and Reproducability</td>
-<td><a href="https://mlip-cmu.github.io/book/24/">24</a></td>
-<td></td>
-<td><a href="https://github.com/mlip-cmu/f2024/blob/main/assignments/project.md">M2: Infrastructure Quality</a></td>
-</tr>
-<tr>
-<td>Wed, Oct 29</td>
-<td>Process &amp; Technical Debt</td>
-<td><a href="https://mlip-cmu.github.io/book/20/">20</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Fri, Oct 31</td>
-<td><img src="https://img.shields.io/badge/-lab-yellow.svg" alt="Lab"> Pipeline automation: MLFlow</td>
-<td><a href="https://mlip-cmu.github.io/book/00/"></a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Mon, Nov 3</td>
-<td>Intro to Ethics + Fairness</td>
-<td><a href="https://mlip-cmu.github.io/book/23/">23</a>,<a href="https://mlip-cmu.github.io/book/26/">26</a></td>
-<td></td>
-<td><a href="https://github.com/mlip-cmu/f2024/blob/main/assignments/I3_mlops_tools.md">I3: MLOps Tools</a></td>
-</tr>
-<tr>
-<td>Wed, Nov 5</td>
-<td>Measuring Fairness</td>
-<td><a href="https://mlip-cmu.github.io/book/26/">26</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Fri, Nov 7</td>
-<td><img src="https://img.shields.io/badge/-lab-yellow.svg" alt="Lab"> Container orchestration: Kubernetis</td>
-<td><a href="https://mlip-cmu.github.io/book/00/"></a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Mon, Nov 10</td>
-<td>Building Fairer Systems</td>
-<td><a href="https://mlip-cmu.github.io/book/26/">26</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Wed, Nov 12</td>
-<td>Explainability</td>
-<td><a href="https://mlip-cmu.github.io/book/25/">25</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Fri, Nov 14</td>
-<td><img src="https://img.shields.io/badge/-lab-yellow.svg" alt="Lab"> Model explainability tools</td>
-<td><a href="https://mlip-cmu.github.io/book/00/"></a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Mon, Nov 17</td>
-<td>Transparency &amp; Accountability</td>
-<td><a href="https://mlip-cmu.github.io/book/29/">29</a></td>
-<td></td>
-<td><a href="https://github.com/mlip-cmu/f2024/blob/main/assignments/project.md">M3: Monitoring and CD</a></td>
-</tr>
-<tr>
-<td>Wed, Nov 19</td>
-<td>Security and Privacy</td>
-<td><a href="https://mlip-cmu.github.io/book/28/">28</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Fri, Nov 21</td>
-<td><img src="https://img.shields.io/badge/-lab-yellow.svg" alt="Lab"> Agent security</td>
-<td><a href="https://mlip-cmu.github.io/book/00/"></a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Mon, Nov 24</td>
-<td>Safety</td>
-<td><a href="https://mlip-cmu.github.io/book/27/">27</a></td>
-<td></td>
-<td><a href="https://github.com/mlip-cmu/f2024/blob/main/assignments/I4_explainability.md">I4: Explainability</a></td>
-</tr>
-<tr>
-<td>Wed, Nov 26</td>
-<td><img src="https://img.shields.io/badge/-break-red.svg" alt="Break"> Thanksgiving break, no classes</td>
-<td><a href="https://mlip-cmu.github.io/book/00/"></a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Fri, Nov 28</td>
-<td><img src="https://img.shields.io/badge/-break-red.svg" alt="Break"> Thanksgiving break, no classes</td>
-<td><a href="https://mlip-cmu.github.io/book/00/"></a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Mon, Dec 1</td>
-<td>Explainability Discussion / Summary / Review</td>
-<td><a href="https://mlip-cmu.github.io/book/00/"></a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Wed, Dec 3</td>
-<td><img src="https://img.shields.io/badge/-midterm-blue.svg" alt="Midterm"> Midterm 2</td>
-<td><a href="https://mlip-cmu.github.io/book/00/"></a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Fri, Dec 5</td>
-<td><img src="https://img.shields.io/badge/-lab-yellow.svg" alt="Lab"> No lab</td>
-<td><a href="https://mlip-cmu.github.io/book/00/"></a></td>
-<td></td>
-<td><a href="https://github.com/mlip-cmu/f2024/blob/main/assignments/project.md">M4: Fairness, Security and Feedback Loops</a></td>
-</tr>
-<tr>
-<td>tbd</td>
-<td>Final Project Presentations</td>
-<td><a href="https://mlip-cmu.github.io/book/00/"></a></td>
-<td></td>
-<td><a href="https://github.com/mlip-cmu/f2024/blob/main/assignments/project.md">Final report</a></td>
-</tr>
-</tbody></table>
-<h2>Course Syllabus and Policies</h2>
-<p>The course uses Canvas and Gradescope for homework submission, grading, discussion, questions, announcements, and supplementary documents; slides will be posted here; Slack is used for communication around homework and projects; Github is used to coordinate group work. All public course material (assignments, slides, syllabus) can be found in the course’s <a href="https://github.com/mlip-cmu/f2025">GitHub repository</a>; announcements and all <em>private</em> material (e.g., grades, passwords) will be shared through Canvas.</p>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  
+
+    <section class="section" id="course-syllabus-and-policies">
+      <div class="card">
+        <div class="card-content">
+          <h2 class="title is-2 has-text-danger">Course Syllabus and Policies</h2>
+          <div class="content">
+          <p>The course uses Canvas and Gradescope for homework submission, grading, discussion, questions, announcements, and supplementary documents; slides will be posted here; Slack is used for communication around homework and projects; Github is used to coordinate group work. All public course material (assignments, slides, syllabus) can be found in the course’s <a href="https://github.com/mlip-cmu/f2025">GitHub repository</a>; announcements and all <em>private</em> material (e.g., grades, passwords) will be shared through Canvas.</p>
 <p><strong>Prerequisites:</strong> The course does not have formal prerequisites, but we describe background knowledge that will help you be successful in the course. In a nutshell, we expect basic exposure to machine learning and basic programming skills, but do not require software engineering experience. </p>
 <p><em>Machine learning (some experience recommended):</em> We suggest that you have basic familiarity with the process of extracting features, building and evaluating models, and a basic understanding of how and when different kinds of learning techniques work (including, but not just limited to prompting LLMs). Familiarity with Python and Jupyter notebooks is helpful. Courses such as 10-301, 10-315, and 05-434 will prepare you well, but project experience or self-learning from books or online courses will likely be sufficient for our purposes. For example, if you have no prior experience, we recommend the book <a href="https://cmu.primo.exlibrisgroup.com/permalink/01CMU_INST/6lpsnm/alma991019665684604436">Hands-On Machine Learning</a> to get practical experience in training and evaluating models prior to taking this course. We have set up a <em><a href="https://forms.gle/JcS61Uao7wHSFQen8">prerequisite knowledge check</a></em> as a Google Form, where we ask 10 questions on machine learning, which help you assess your background – this is set up as an anonymous and ungraded quiz, where you can compare your knowledge against what we believe is useful for you to be successful in this course (click on <em>“view score”</em> after submitting your answer). After submitting your answers, the system will give specific pointers to readings and exercises that may help you fill gaps in background knowledge. </p>
 <p><em>Programming (basic proficiency required):</em> The course has a substantial programming component, especially in the first assignment and the team project, so basic programming skills will be needed. If you take the course without programming experience or solely rely on LLMs/agents for all your coding, you will significantly struggle and it may cause conflicts within the group project. We expect that you meet the following criteria: (1) basic fluency in a programming language like Python, (2) ability to install and learn libraries in that language, (3) ability to ssh into a Unix machine and perform basic command line operations, and (4) ability to install and learn new tools like Docker. We do not prescribe a programming language, but almost all student teams decide to work primarily in Python. We will provide some introductions and examples for essential tools like Git, Docker, Grafana, and Jenkins in labs, but we expect that you will be able to pick up new tools and libraries on your own. For example, we expect that you will be able, on your own, to learn basic use of a library like <a href="https://flask.palletsprojects.com/en/2.1.x/">Flask</a> to write a web service. Throughout the semester, expect to read lots of documentation and tutorials to learn various libraries and tools on your own. If you are worried whether your technical background is sufficient, we recommend that you look at (or even try) <a href="https://github.com/mlip-cmu/f2025/blob/main/assignments/I1_mlproduct.md">homework I1</a> before the semester.</p>
@@ -419,47 +147,14 @@
 <p><strong>Grading:</strong> Evaluation will be based on the following distribution: 35% individual assignments, 30% group project, 15% midterms, 5% participation, 10% labs, 5% reading quizzes. No final exam.</p>
 <p>We strive to provide clear specifications and clear point breakdowns for all homework to set clear expectations and take the guessing out of homework. We often give you choices to self-direct your learning, deciding what to work on and how to address a problem (e.g., we never prescribe a programming language). Clear specifications and point breakdowns allow you to intentionally decide to skip parts of assignments with clear upfront consequences. All parts will be graded pass/fail for the points indicated, no partial credit. For opportunities to redo work, see <em>resubmissions</em> below. For grading participation and quizzes see below. Some assignments have a small amount of bonus points. </p>
 <p>Since we give flexibility to resubmit assignments, we set grade boundaries fairly high. We expect the following grade boundaries:</p>
-<table>
-<thead>
-<tr>
-<th>Grade</th>
-<th>Cutoff</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>A+</td>
-<td>&gt;99%</td>
-</tr>
-<tr>
-<td>A</td>
-<td>&gt;96%</td>
-</tr>
-<tr>
-<td>A-</td>
-<td>&gt;94%</td>
-</tr>
-<tr>
-<td>B+</td>
-<td>&gt;91%</td>
-</tr>
-<tr>
-<td>B</td>
-<td>&gt;86%</td>
-</tr>
-<tr>
-<td>B-</td>
-<td>&gt;82%</td>
-</tr>
-<tr>
-<td>C</td>
-<td>&gt;75%</td>
-</tr>
-<tr>
-<td>D</td>
-<td>&gt;60%</td>
-</tr>
-</tbody></table>
-<p><strong>Participation:</strong> Design and engineering content requires active engagement with the material and discussions of judgment decisions on specific scenarios and cases. We strongly believe in in-class discussions and in-class exercises and want all students to participate, e.g., answering or asking questions in class, sharing own experiences, presenting results, or participating in in-class votes and surveys. We will give many opportunities for participation in every lecture and lab. We note student engagement with in-class activities to include as a component in grading. We also consider cheating in in-class activities as an academic integrity violation (see below).  We will provide feedback at mid-semester so that you can check in on how you’re doing. Again, please talk to us if you need accommodations.</p>
+
+    <div class="table-container">
+      <table class="table is-striped is-hoverable is-fullwidth">
+        <thead><tr><th>Grade</th><th>Cutoff</th></tr></thead>
+        <tbody><tr><td>A+</td><td>&gt;99%</td></tr><tr><td>A</td><td>&gt;96%</td></tr><tr><td>A-</td><td>&gt;94%</td></tr><tr><td>B+</td><td>&gt;91%</td></tr><tr><td>B</td><td>&gt;86%</td></tr><tr><td>B-</td><td>&gt;82%</td></tr><tr><td>C</td><td>&gt;75%</td></tr><tr><td>D</td><td>&gt;60%</td></tr></tbody>
+      </table>
+    </div>
+  <p><strong>Participation:</strong> Design and engineering content requires active engagement with the material and discussions of judgment decisions on specific scenarios and cases. We strongly believe in in-class discussions and in-class exercises and want all students to participate, e.g., answering or asking questions in class, sharing own experiences, presenting results, or participating in in-class votes and surveys. We will give many opportunities for participation in every lecture and lab. We note student engagement with in-class activities to include as a component in grading. We also consider cheating in in-class activities as an academic integrity violation (see below).  We will provide feedback at mid-semester so that you can check in on how you’re doing. Again, please talk to us if you need accommodations.</p>
 <p>We assign participation grades as follows:</p>
 <ul>
 <li>100%: Participates actively at least once in most lectures (4 lectures waived, no questions asked)</li>
@@ -508,16 +203,28 @@
 If you or anyone you know experiences any academic stress, difficult life events, or feelings like anxiety or depression, we strongly encourage you to seek support. Counseling and Psychological Services (CaPS) is here to help: call 412-268-2922 and visit their website at <a href="http://www.cmu.edu/counseling/">http://www.cmu.edu/counseling/</a>. Consider reaching out to a friend, faculty or family member you trust for help getting connected to the support that can help.
 If you are worried about affording food or feeling insecure about food, there are resources on campus that can help, such as the <a href="https://www.cmu.edu/student-affairs/resources/cmu-pantry/">CMU Pantry</a>.</p>
 
-        </section>
-
-        <footer>
-        
-          See GitHub repository with all resources at <a href="https://github.com/ckaestne/seai">https://github.com/ckaestne/seai</a>.
-        </footer>
-
+          </div>
+        </div>
       </div>
-    </div>
-
-    
-  </body>
+    </section>
+  
+  </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Get all "navbar-burger" elements
+      const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+      // Add a click event on each of them
+      $navbarBurgers.forEach(el => {
+        el.addEventListener('click', () => {
+          // Get the target from the "data-target" attribute
+          const target = el.dataset.target;
+          const $target = document.getElementById(target);
+          // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+          el.classList.toggle('is-active');
+          $target.classList.toggle('is-active');
+        });
+      });
+    });
+  </script>
+</body>
 </html>
