@@ -1,14 +1,14 @@
-# Machine Learning in Production (17-445/17-645/17-745)
+# Course 17-445/17-645/17-745: Machine Learning in Production
 
 ### Fall 2025 
 
-<em>CMU course that covers how to build, deploy, assure, and maintain software products with machine-learned models. Includes the entire lifecycle from a prototype ML model to an entire system deployed in production. Covers also **responsible AI** (including safety, security, fairness, explainability) and **MLOps**. For earlier offerings see websites for [Fall 2019](https://ckaestne.github.io/seai/F2019), [Summer 2020](https://ckaestne.github.io/seai/S2020), [Fall 2020](https://ckaestne.github.io/seai/F2020/), [Spring 2021](https://ckaestne.github.io/seai/S2021/)  [Spring 2022](https://ckaestne.github.io/seai/S2022/), [Fall 2022](https://ckaestne.github.io/seai/F2022/), [Spring 2023](https://github.com/mlip-cmu/s2023), [Spring 2024](https://github.com/mlip-cmu/s2024),  [Fall 2024](https://github.com/mlip-cmu/f2024), and [Spring 2025](https://github.com/mlip-cmu/s2025). This Fall 2025 offering is designed for students with some data science experience (e.g., has taken a machine learning course, has used sklearn) and basic programming skills (e.g., basic Python programming with libraries, can navigate a Unix shell), but will not expect a software engineering background (i.e., experience with testing, requirements, architecture, process, or teams is not required). Going forward we expect to offer this course at least every spring semester and possibly some fall semesters (not summer semesters).</em>
+CMU course that covers how to build, deploy, assure, and maintain software products with machine-learned models. Includes the entire lifecycle from a prototype ML model to an entire system deployed in production. Covers also **responsible AI** (including safety, security, fairness, explainability) and **MLOps**. For earlier offerings see websites for [Fall 2019](https://ckaestne.github.io/seai/F2019), [Summer 2020](https://ckaestne.github.io/seai/S2020), [Fall 2020](https://ckaestne.github.io/seai/F2020/), [Spring 2021](https://ckaestne.github.io/seai/S2021/)  [Spring 2022](https://ckaestne.github.io/seai/S2022/), [Fall 2022](https://ckaestne.github.io/seai/F2022/), [Spring 2023](https://github.com/mlip-cmu/s2023), [Spring 2024](https://github.com/mlip-cmu/s2024),  [Fall 2024](https://github.com/mlip-cmu/f2024), and [Spring 2025](https://github.com/mlip-cmu/s2025). This Fall 2025 offering is designed for students with some data science experience (e.g., has taken a machine learning course, has used sklearn) and basic programming skills (e.g., basic Python programming with libraries, can navigate a Unix shell), but will not expect a software engineering background (i.e., experience with testing, requirements, architecture, process, or teams is not required). Going forward we expect to offer this course at least every spring semester and possibly some fall semesters (not summer semesters).
 
----
+## Resources
 
 For researchers, educators, or others interested in this topic, we share all course material, including slides and assignments, under a creative commons license on GitHub (https://github.com/mlip-cmu) and have also published a [textbook](https://mlip-cmu.github.io/book/) with chapters corresponding to almost every lecture. A while ago we also wrote an article describing the rationale and the initial design of this course: [Teaching Software Engineering for AI-Enabled Systems](https://arxiv.org/abs/2001.06691). Video recordings of the Summer 2020 offering are online on the [course page](https://ckaestne.github.io/seai/S2020/#course-content), though they are quite outdated by now. We would be happy to see this course or a similar version taught at other universities. See also an [annotated bibliography](https://github.com/ckaestne/seaibib) on research in this field.
 
-## Course Description
+## What to Expect...
 
 This is a course for those who want to build **software products** with **machine learning**, not just models and demos. We assume that you can train a model or build prompts to make predictions, but what does it take to turn the model into a product and actually deploy it, have confidence in its quality, and successfully operate and maintain it at scale? 
 
@@ -52,7 +52,7 @@ The course is the same under all course numbers, except for the PhD-level 17-745
 Open to all undergraduate and graduate students meeting the prerequisites. In-person offering only, no remote option.
 
 
-### Spring 2025
+### Fall 2025
 
 Lectures Monday/Wednesday 3:30-4:50pm, in person, PH 100
 
@@ -67,7 +67,7 @@ TAs: Kaushik Koirala, Krishnaprasad Vijayshankar, Michelle Wang, Bhuvana Murugad
 We are happy to answer questions by email and over Slack, meet in person, and will jump on a quick Zoom call if you ask us. We also always arrive 5 to 10 min early to class and stay longer for discussions and questions. If you have questions about assignments and logistics, we prefer that you ask them publicly on Slack.
 
 
-## Course content
+## Schedule
 
 This year we plan a couple of updates regarding AI agents and risk managements and emerging tooling. Our list of learning goals under [Learning Goals](https://github.com/mlip-cmu/f2025/blob/main/learning_goals.md) describes what we aim to cover. Below is a table of a preliminary schedule. We expect the schedule to stay fairly stable, but there may be a couple of smaller changes as the semester progresses.
 

@@ -75,7 +75,7 @@ let currentGroup = { heading: null, tokens: [] };
 
 for (let i = 0; i < tokens.length; i++) {
   const token = tokens[i];
-  if (token.type === 'heading' && token.depth === 2) {
+  if (token.type === 'heading' && token.depth <= 2) {
     if (currentGroup.tokens.length > 0 || currentGroup.heading) {
       groups.push(currentGroup);
     }
@@ -173,7 +173,7 @@ const html = `<!DOCTYPE html>
       </div>
       <div id="navbarBasic" class="navbar-menu">
         <div class="navbar-start">
-          <a class="navbar-item" href="#course-content">Schedule</a>
+          <a class="navbar-item" href="#schedule">Schedule</a>
           <a class="navbar-item" href="#course-syllabus-and-policies">Syllabus</a>
           <a class="navbar-item" href="">Canvas</a>
           <a class="navbar-item" href="https://github.com/YOUR_GITHUB_REPO" target="_blank" rel="noopener">
