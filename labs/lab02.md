@@ -6,8 +6,7 @@ To receive credit for this lab, show your work to the TA during recitation.
 
 ## Deliverables
 - [ ] Establish a secure SSH tunnel to the Kafka server. Explain to the TA the concepts of topic and offsets in Kafka and how this ensures message continuity if a consumer is disconnected.
-- [ ] Modify starter code to implement producer and consumer modes for a Kafka topic.
-- [ ] Design a schema for the messages and justify the decisions made.
+- [ ] Modify starter code to implement producer and consumer modes for a Kafka topic. Explain the the tradeoffs of the different *auto_offset_reset* values.
 - [ ] Demonstrate using Kafka's CLI tool *kcat* (or alternatives) to manage and monitor Kafka topics and messages.
 
 
@@ -23,7 +22,7 @@ To receive credit for this lab, show your work to the TA during recitation.
 
 ## Implementing Producer-Consumer Mode
 ### 1. Producer Mode: Writes Data to Broker
-Refer TODO sections in the script. Design a schema while making decisions on what should be included with the City data; Consider which fields are optional or required. Edit the bootstrap servers and add 2-3 cities of your choice. Run the code to write to Kafka stream.
+Refer TODO sections in the script. Edit the bootstrap servers and add 2-3 cities of your choice. Run the code to write to Kafka stream.
 
 
 ### 2. Consumer Mode: Reads Data from Broker
