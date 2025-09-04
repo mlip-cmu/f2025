@@ -1,19 +1,18 @@
-# Individual Assignment 2: Requirements
+# Individual Assignment 2: Risks and Mitigations
 
 (17-445/17-645/17-745 Machine Learning in Production; 11-695 AI Engineering)
 
 ## Overview
 
-In this assignment, you will zoom out from the ML component and think about the requirements and risks associated with a larger ML-enabled system in a concrete scenario. 
-
-In this assignment, you will get practice on how to systematically identify system requirements and risks associated with a larger ML-enabled system. In particular, you will learn to (a) make a clear distinction between the roles that environmental and machine entities play in system dependability, and (2) hazard analysis and apply fault tree analysis (FTA) to identify and analyze potential risks in a case study scenario involving a vehicle dash cam. 
+In this assignment, you will zoom out from the ML component and think about about risks and how to mitigate them for an ML-powered system in a concrete scenario. We will use several approaches to consider proactively think about risks through the lens of requirements and safety engineering.
 
 Learning goals:
-* Understand the role of the environment in establishing system requirements.
-* Learn to systematically identify risks and design mitigation strategies.
+* Understand the role of the environment and environmental assumptions in system risks and establishing system requirements
+* Consider multiple different mitigation strategies in the system design to eliminate or reduce risks
+* Design reliable measures for qualities of interest
 * Apply hazard analysis to anticipate risks
 * Apply FTA to understand risks and plan mitigations in an AI-enabled system
-* Understand the strengths and limitations of FTA.
+* Understand the strengths and limitations of these techniques.
 
 ## Scenario
 
@@ -29,28 +28,21 @@ In designing such system, there are many considerations, such as:
 * You suspect users may be worried about privacy and charges for data.
 * You recently hear everywhere, including press and consultants, how exciting the future of [Edge computing](https://en.wikipedia.org/wiki/Edge_computing) rather than Cloud computing is going to be and wonder whether you should explore that. You wouldn't be opposed to thinking about partnering with other organizations to, say, install hardware in gas stations or drive-throughs.
 
-Overall, you are concerned at least about the following qualities:
-
-1. Latency between reporting a child missing (with numerous pictures) to receiving potential matches from dashcam users
-2. Number of false positives and false negatives reports of detected missing children
-3. Ability to observe how well the system works in production
-4. Scalability and cost of running the infrastructure with many users across many countries
-5. Operating costs for users operating the dashcam
-6. Difficulty of changing and updating the system to meet new requirements or incorporate better technology
-7. Privacy
-8. Development cost, technical complexity of the solution, and maintainability
-
 ## Tasks
 
-Think about requirements for such a system and how would you decompose them into specifications on individual components (AI or not). What assumptions about the environment does this system need to rely on? What could go wrong and how could risks be mitigated? 
+The main goal of this assignment is to anticipate and mitigate risks in the system, using tools from requirements and safety engineering. We guide this through six steps:
 
-First, identify the goals for the new feature in the dashcam. Break down goals into *organizational goals*, *system goals*, *user goals*, and *model goals* and design corresponding *measures* you could use to assess how well you achieve the goals. The measures could be described in the 3-step process (measure, data, operationalization, see Model Accuracy lecture) with sufficient precision for others to conduct the measurement independently, manually or automatically. Provide a brief description of how goals relate to each other (e.g., “better model accuracy should help with higher user satisfaction”). Organizational objectives must be stated from the perspective of the dashcam company (not the partnering non-profits or authorities).  For user outcomes and model properties, make clear to which users or models the goal refer; you may state different goals for different users/models. Your list of goals should be reasonably comprehensive and may include multiple goals at each level.
+First, identify direct and indirect stakeholders who care about the system and the new feature. Aim for at least 4 direct and 6 indirect stakeholders.
 
-Second, use hazard analysis to proactively identify possible risks the system has/creates from the perspective of different stakeholders. We recommend to follow a process similar to STPA, that considers stakeholders, their values, and possible corresponding losses to identify risks.
+Second, understand the goals of this project, especially the goals of the different stakeholders and how they may or may not align with the system and model goals. For this assignment, explicitly break down goals into *organizational goals*, *system goals*, *user goals* (for at least 3 different stakeholders), and *model goals*. To ensure that the goals are concrete and measurable, design a *measure* for one goal from each category that you could use to assess how well you achieve those goals. The measures could be described in the 3-step process (measure, data, operationalization, see Model Accuracy lecture) with sufficient precision for others to conduct the measurement independently, manually or automatically. Provide a brief description of how goals relate to each other (e.g., “better model accuracy should help with higher user satisfaction”). Organizational objectives must be stated from the perspective of the dashcam company (not the partnering non-profits or authorities).  For user outcomes and model properties, make clear to which user(s) or model(s) the goal refer; you may state different goals for different users/models. Your list of goals should be reasonably comprehensive and may include multiple goals at each level.
 
-Third, think back to the *world vs machine* discussion in class. Consider one of the critical requirements of the system (REQ) related to one of the identified risks. What assumptions about the environment (ASM) do you need to rely on to achieve this requirement? What are the responsibilities (SPEC) of the machine components (both AI and non-AI) that are needed to establish REQ in conjunction with ASM?
+Third, based on user goals of different stakeholders perform hazard analysis to proactively identify possible risks from their perspectives. Follow the early steps of an STPA-style analysis, as introduced in class, to identify values and goals per stakeholder, identify possible losses, and turn those into requirements. Perform this step for the three stakeholder and their goals from the previous step and aim for about 5 to 10 risks per stakeholder.
 
-Fourth, think about what could go wrong for this requirement. Use fault tree analysis to analyze possible causes for violating the requirement. Start with the top event for violating of the requirement and break it into intermediate and basic events (which may correspond to a violation of an environmental assumption or an AI component making mistakes). From the fault tree, derive minimal cut sets. Finally, design at least two strategies for mitigating the risks of potential failures and incorporate them into the fault tree. Mitigation strategies will typically be at the system level, outside of the AI component itself, and will reduce the risk of the requirement violation. Briefly explain how each suggested mitigation strategy can (partially for fully) address the risk.
+Fourth, analyze the requirements with a critical focus on assumptions the system designers may make that do not actually hold. For the process, select a critical requirements of the system derived from the previous step (REQ). List plausible assumptions about the environment (ASM) commonly made that are needed to achieve this requirement. Also identify the responsibilities (SPEC) of the software components (both AI and non-AI) that are needed to establish the REQ in conjunction with ASM. Aim for at least one specification and 5 assumptions.
+
+Fifth, think systematically about what could go wrong for the same requirement and model it as a fault three. Start with the top event for violating of the requirement and break it into intermediate and basic events (which may correspond to a violation of an environmental assumption or an AI component making mistakes). The fault tree should cover possible violations of assumptions and specifications from the previous step (if plausible), but can include additional information. 
+
+Finally, describe at least two strategies for mitigating the risks of potential failures for the analyzed requirement and incorporate them into the fault tree. Mitigation strategies will typically be at the system level, outside of the AI component itself, and will reduce the risk of the requirement violation. Briefly explain how each suggested mitigation strategy can (partially for fully) address the risk.
 
 
 
@@ -58,12 +50,12 @@ Fourth, think about what could go wrong for this requirement. Use fault tree ana
 
 Submit a report as a single PDF file to Gradescope that covers the following topics in clearly labeled sections (ideally each section starts on a new page):
 
-1. **Goals** (2 pages max): Provide a list of organizational goals, system goals, user goals, and model goals, each with a corresponding measure.
-2. **Environment and Machine** (0.5 page max): Identify environmental entities and machine components (AI and non-AI) in this scenario. The machine components must include at least one AI component that performs image recognition.
-3. **Hazard analysis** (2 pages max): Perform STPA-style hazard analysis to proactively identify possible risks from the perspective of different direct and indirect stakeholders. Describe the hazard analysis steps you followed and the risks you identified.
-4. **Requirement Decomposition** (1 page max): Select **one** requirement to analyze, corresponding to one of the risks identified above. Specify a list of environment assumptions (ASM) and specifications (SPEC) that are needed to establish this requirement (REQ).
-5. **Risk analysis** (2 pages max): Perform a fault tree analysis to identify potential root causes for the violation of the requirement selected in the previous step. Identify all minimal cut sets in your fault tree. 
-6. **Mitigations** (1 page max): Suggest at least two mitigation strategy to reduce the risk of the failure studied in the fault tree. Both mitigations should be at the system level, outside of the ML component (i.e., not just "collect more training data"). Briefly explain how the mitigations reduce the risk. Provide a second updated fault tree that includes those mitigations.
+1. **Stakeholders** (1 page max): List of 10 or more relevant stakeholders, roughly separated in direct and indirect stakeholders.
+2. **Goals** (2 pages max): Provide a list of organizational goals, system goals, user goals, and model goals. Include at least three different user goals corresponding to three stakeholders identified in the previous step. Provide a concrete measure for at least one organizational goal, one system goal, one user goal, and one model goal.
+3. **Hazard analysis** (3 pages max): Briefly describe the hazard analysis steps you followed and illustrate it by providing data from intermediate steps. List risks and corresponding requirements for the stakeholders selected in the previous steps (typically 5 to 10 per stakeholder). 
+4. **Requirement Decomposition** (1 page max): Select *one* requirement identified in the previous step to analyze. Specify a list of environment assumptions (ASM) and specifications (SPEC) that are needed to establish this requirement (REQ).
+5. **Risk analysis** (1 figure): Perform a fault tree analysis to identify potential root causes for the violation of the requirement selected in the previous step. The resulting fault tree should include all plausible violations of assumptions and specifications identified in the previous step.
+6. **Mitigations** (0.5 page max and 1 figure): Suggest at least two mitigation strategy to reduce the risk of the failure studied in the fault tree. Both mitigations should be at the system level, outside of the ML component (i.e., not just "collect more training data"). Briefly explain how the mitigations reduce the risk. Provide a second updated fault tree that includes those mitigations.
 
 For drawing fault trees, you may use any tool of your choice (e.g., Google Drawings or [draw.io](https://app.diagrams.net/)). A scan of a hand-drawn diagram is acceptable, as long as it is clearly legible. There are also dedicted FTA apps you could use; e.g., [Fault Tree Analyzer](https://www.fault-tree-analysis-software.com). We are not picky about the exact shapes in the notation as long as the connections are clear.
 
@@ -73,12 +65,11 @@ Page limits are recommendations and not strictly enforced. You can exceed the pa
 
 The assignment is worth 100 points. For full credit, we expect:
 
-* [ ] 10 points: Goals are listed and appropriately grouped. There is at least one goal for each of the four categories of goals. The goals relate to the scenario and are reasonably complete.
-* [ ] 10 points: A measure is provided for each goal. Each measure is clearly described in the 3-step method of measure-data-operationalization, with the information clearly associated with the correct step and with enough detail that somebody could independently conduct measurement.
-* [ ] 10 points: Environment entities and machine components relevant to the scenario are listed. The machine components include at least one AI component that performs image recognition.
-* [ ] 15 points: The process and intermediate results of a hazard analysis is described, that includes identifying stakeholders, their values/goals, and corresponding losses. At least 3 stakeholders are analyzed; both direct and indirect stakeholders are analyzed. A plausible list of risks is provided.
-* [ ] 15 points: A single selected requirement (REQ), environmental assumptions (ASM), and machine specifications (SPEC) are clearly stated, corresponding to one of the risks identified in the hazard analysis. The requirements mention only phenomena in the world. It relates to a system goal discussed in Section 1. All stated assumptions relate to phenomena in the world or map those to shared phenomena accessibly by the machine. All stated specifications mention only those phenomena in the interface between the world and the machine. The requirement, environmental assumption, and machine specifications fit reasonably together and correspond to the scenario.
-* [ ] 15 points: A fault tree that shows possible causes behind the violation of the requirement selected in the requirements decomposition step. The included fault tree is syntactically valid.
-* [ ] 10 points: *All* minimal cut sets are identified from the fault tree.
-* [ ] 15 points: At least two mitigation strategies, corresponding to the requirement and the cut sets identified, are described. The description explains how the risk is reduced. The mitigations are at the system level outside the ML component. The mitigations are reflected correctly in an updated fault tree.
+* [ ] 10 points: At least 10 stakeholders are identified. The stakeholders are relevant to the scenario. The list includes both direct and indirect stakeholders.
+* [ ] 15 points: Goals are listed and appropriately grouped. There is at least one organizational goal, one system goal, three user goals corresponding to three of the previously identified stakeholders, and one model goal. The goals relate to the scenario and are plausible for the scenario.
+* [ ] 15 points: A measure is provided for at least one organizational goal, one system goal, one user goal, and one model goal. Each measure is clearly described in the 3-step method of measure-data-operationalization, with the information clearly associated with the correct step and with enough detail that somebody could independently conduct measurement.
+* [ ] 15 points: The process and intermediate results of a hazard analysis is described, that considers stakeholders, their values/goals, and corresponding losses. At least 3 stakeholders are analyzed. A plausible list of at least 5 risks and corresponding requirements is provided for each analyzed stakeholder.
+* [ ] 15 points: A single requirement (REQ) is selected from the previous step for further analysis. At least 3 environmental assumptions (ASM) and at least one software specifications (SPEC) necessary to fulfill the requirement are clearly stated. The requirement mention only phenomena in the environment ("world"). All stated assumptions relate to phenomena in the environment or map those to shared phenomena accessibly by the software ("machine"). All stated specifications mention only those phenomena in the interface between the environment and the software. The requirement, environmental assumption, and software specifications fit reasonably together and are plausible in the scenario.
+* [ ] 15 points: A fault tree that shows possible causes behind the violation of the requirement selected in the requirements decomposition step. The included fault tree is syntactically valid. The fault tree includes at a minimum the violation of assumptions and specifications identified in the previous step (if plausible).
+* [ ] 15 points: At least two mitigation strategies, corresponding to the requirement, are described. The description explains how the risk is reduced or eliminated. The mitigations are at the system level outside the ML component. The mitigations are reflected correctly in an updated fault tree.
 
