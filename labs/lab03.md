@@ -55,7 +55,7 @@ cd pytorch-copy
 5. Push your branch to your fork and open a **pull request** from your branch into `upstream/main` (the original repo, main branch from [Michelle-Wang0/pytorch_copy](https://github.com/Michelle-Wang0/pytorch_copy)).  
 6. Save the PR URL to show the TA.
 
-## Exercise C — Safe rollback with `git revert`
+## Exercise 3: Safe rollback with `git revert`
 1. On a new commit (can be on your pull request branch), and create a small intentional mistake (e.g., a typo or debug print) and **commit** it.  
 2. Perform a **rollback using `git revert <bad-commit-hash>`** to create a new commit that undoes the change while preserving history.  
 3. Show the log and point out the revert commit.  
