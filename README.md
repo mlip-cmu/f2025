@@ -89,7 +89,7 @@ The course uses Canvas and Gradescope for homework submission, grading, discussi
 
 Email the instructors if you would like to further talk to us about prerequisites.
 
-**In-person teaching and lecture recordings:** The course will be taught in person.  We consider in-class participation an important part of the learning experience. We _do_ make _best effort_ lecture recordings, which will be available in Canvas.  We do _not_ provide a synchronous remote option, and we do not record labs.  You are welcome to use recordings to review material and to make up missed lectures. However, absent explicit accommodations (see below), viewing the recording will not make up for missed in-class participation.  
+**In-person teaching and lecture recordings:** The course will be taught in person.  We consider in-class participation an important part of the learning experience. We _do_ make _best effort_ lecture recordings for students with accommodations who miss a class (reach out to us).  We do _not_ provide a synchronous remote option, and we do not record labs. 
 
 We regularly use Slack for in-class activities. Please make sure that you have access to Slack on a laptop, tablet, or mobile phone during class.
 
