@@ -1,3 +1,16 @@
+# Lab 3: Git
+
+## Prerequisites
+- Github account
+- Git installed on your local machine
+  - Please use github cli or git directly
+
+
+## Deliverables:
+
+- [ ] Create and fix a merge conflict locally. Then, amend the merge commit to state that a merge conflict was resolved.
+- [ ] Raise a pull request with your new changes, show the the url of the pull request to a TA. Explain the difference between a cloned and forked repository, and explain why we use pull requests.
+- [ ] Demonstrate a safe rollback using `git revert` of a commit you intentionally add during the lab, and explain when `revert` is preferred over `reset`.
 
 It is recommended that you use a git extension for your IDE to complete this lab. If you are using Visual Studio Code, you can use the [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) extension.
 
