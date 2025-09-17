@@ -9,17 +9,18 @@ In this lab, you'll gain hands-on experience using **Weights & Biases (W&B)** fo
 
 To receive credit for this lab, show your completed notebook and filtered tables to the TA during recitation.
 
+
 ## Deliverables
 
 Your goal in this lab is to simulate how ML engineers evaluate model behavior in production settings—by logging model predictions, slicing data to find failure patterns, and generating test cases to stress-test model performance.
 
 To receive credit, walk your TA through the following:
 
-- [ ] **Log your run to W&B**, including dataset, predictions, and evaluation metrics, as a `predictions_table`
-- [ ] **Create at least 5 custom slices** using W&B Table filters and explain to the TA what insights you gained from each
-- [ ] **Generate 10 synthetic test cases** using an LLM for one new slice.
+- [ ] **Set up and log your run to W&B**, create 2 slices with filters, and generate bar chart visualizations of accuracy.  
+- [ ] **Analyze your slices and their accuracies**, explain the insights you gained, and answer: *Why can accuracy be misleading, and why is slicing useful?*  
+- [ ] **Create 3 additional slices and generate 10 synthetic test cases** using an LLM for one new slice.
 
-Hints: For the slices you create, you should be able to justify why you want to create them and demonstrate what you have observed for the created slices.
+Hints: For the slices you create, you should be able to justify why you want to create them and demonstrate what you observed for each.
 
 
 ## Getting started
