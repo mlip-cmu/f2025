@@ -32,7 +32,7 @@ Hints: For the slices you create, you should be able to justify why you want to 
 - Install dependencies:
 
   ```bash
-  pip install --upgrade wandb datasets transformers tqdm emoji
+  pip install --upgrade wandb datasets transformers tqdm emoji torch
 - Login to W&B
 
     1. Create a free account at [https://wandb.ai](https://wandb.ai) using your CMU email  
