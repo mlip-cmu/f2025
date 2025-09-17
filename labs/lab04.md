@@ -17,7 +17,7 @@ Your goal in this lab is to simulate how ML engineers evaluate model behavior in
 To receive credit, walk your TA through the following:
 
 - [ ] **Set up and log your run to W&B**, create 2 slices with filters, and generate bar chart visualizations of accuracy.  
-- [ ] **Analyze your slices and their accuracies**, explain the insights you gained, and answer: *Why can accuracy be misleading, and why is slicing useful?*  
+- [ ] **Analyze your slices and their accuracies compared to the global accuracy**, explain the insights you gained, and answer: *Why can accuracy be misleading, and why is slicing useful?*  
 - [ ] **Create 3 additional slices and generate 10 synthetic test cases** using an LLM for one new slice.
 
 Hints: For the slices you create, you should be able to justify why you want to create them and demonstrate what you observed for each.
