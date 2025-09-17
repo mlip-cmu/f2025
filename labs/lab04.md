@@ -46,3 +46,6 @@ Hints: For the slices you create, you should be able to justify why you want to 
 - Finish all 8 steps mentioned in the python notebook
 - If you have trouble downloading the datasets and/or running model inference, use `tweets.csv` shared in the folder
 - If you have trouble using the GPTs provided, use plain ChatGPT for test case generation
+
+## References
+- Go through wandb documentation : [https://docs.wandb.ai/guides/app/features/panels/](https://wandb.ai)
