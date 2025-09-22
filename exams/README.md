@@ -20,4 +20,6 @@ Midterms from previous semesters are available as practice for the first midterm
 * [Midterm from Fall 2022](https://github.com/ckaestne/seai/blob/F2022/exams/) 
 * [Midterm from Spring 2023](https://github.com/mlip-cmu/s2023/tree/main/exams) 
 * [Midterm from Spring 2024](https://github.com/mlip-cmu/s2024/tree/main/exams) 
+* [Midterm from Fall 2024](https://github.com/mlip-cmu/f2024/tree/main/exams) 
+* [Midterm from Spring 2025](https://github.com/mlip-cmu/s2025/tree/main/exams) 
 
