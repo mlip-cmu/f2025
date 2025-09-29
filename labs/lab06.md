@@ -17,7 +17,7 @@ By the end, you should understand how CI helps maintain code quality, automate M
 
 ### Create Your Repository
 
-1. Start from the [Lab 6 Template Repository](link-to-template)
+1. Start from the [Lab 6 Template Repository](https://github.com/BhuvanashreeM/lab6-github-actions-template)
 2. Click **Use this template** at the top
 3. Name your repository: `lab6-actions-<your-first-name>`
 4. **Important:** Set visibility to **Private**
