@@ -22,7 +22,7 @@ By the end, you should understand how CI helps maintain code quality, automate M
 3. Name your repository: `lab6-actions-<your-first-name>`
 4. **Important:** Set visibility to **Private**
 
-> Private repos ensure your workflows, credentials, and logs remain restricted when using self-hosted runners.
+> Note: Keeping the repository private is especially important when using self-hosted runners (which you will set up in Step 4), since workflow logs and any credentials used during execution could otherwise be exposed publicly. A private repo ensures this information remains restricted to you and your collaborators.
 
 ### Local Setup
 
@@ -72,6 +72,8 @@ Push your updates to the same PR and observe CI turning green once coverage meet
 So far, you’ve seen how the workflow runs tests with coverage as one of the steps in the CI pipeline. Now you’ll try adding a new step.
 
 Check  `.github/workflows/ci.yml` and complete the section marked for adding a step for running the demo pipeline end-to-end, so that CI executes `prediction_pipeline_demo.py` and logs the model’s R² score.
+
+> Note: For your course project, we don’t expect you to run full training pipelines inside CI. In practice, GitHub Actions steps are best used for lightweight checks, tests, and validations. Here, the demo pipeline is included only as an exercise to illustrate how a command can be executed within a workflow.
 
 ## Step 4: Self-Hosted Runner
 
