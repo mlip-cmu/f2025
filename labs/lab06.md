@@ -6,7 +6,7 @@ By the end, you should understand how CI helps maintain code quality, automate M
 
 ## Deliverables
 
-- [ ] **Deliverable 1:** Create a pull request that demonstrates one failing check (coverage below threshold) and one passing check (coverage above threshold). Show the TA the PR view with red and green checks, and point out in the logs how coverage caused the pass/fail. Explain to the TA why enforcing a coverage threshold in CI is useful and what kind of issues it helps catch early.
+- [ ] **Deliverable 1:** Create a pull request that demonstrates one failing check (coverage below threshold) and one passing check (coverage above threshold). Show the TA the PR view with red and green checks, and point out in the logs how coverage caused the pass/fail. Explain to the TA when or whether enforcing coverage is useful.
 
 - [ ] **Deliverable 2:** Configure the workflow to run on your self-hosted runner. Trigger a workflow run and show in the logs that the runner label is `self-hosted`. Explain to the TA the difference between a GitHub-hosted runner and a self-hosted runner, and why you might prefer one over the other.
 
@@ -17,7 +17,7 @@ By the end, you should understand how CI helps maintain code quality, automate M
 
 ### Create Your Repository
 
-1. Start from the [Lab 6 Template Repository](https://github.com/BhuvanashreeM/lab6-github-actions-template)
+1. Start from the [Lab 6 Template Repository](link-to-template)
 2. Click **Use this template** at the top
 3. Name your repository: `lab6-actions-<your-first-name>`
 4. **Important:** Set visibility to **Private**
@@ -50,60 +50,32 @@ Examine the output to understand which lines are executed and which are missing 
 
 ## Step 1: GitHub Actions CI Setup
 
-The repository includes `.github/workflows/ci.yml` which:
+Open `.github/workflows/ci.yml` and familiarise yourself with the important terms and layout of a GitHub Actions workflow (jobs, steps, runs-on, etc.). Pay attention to the step “Run tests with coverage”.
 
-- Checks out code
-- Sets up Python
-- Installs dependencies
-- Runs tests with coverage
+Reproduce the command from the “Run tests with coverage” step once on your local machine. The current configuration uses a default coverage threshold of 50%:
 
+Understand converage:
 **Default coverage threshold:** `--cov-fail-under=50`
-
 - Coverage ≥ 50% → the GitHub Actions workflow job will succeed (CI passes).
 - Coverage < 50% → the GitHub Actions workflow job will fail (CI fails).
 
-Check missing lines in the "Run tests with coverage" step logs.
-
-
 ## Step 2: Experiment with Coverage Thresholds
 
-### Red PR (Failing)
+In Step 1, you learned what the coverage threshold means (default: 50%) when running tests locally. Now raise the threshold in the GitHub Actions workflow to **70%** and open a pull request to see how CI enforces it.
 
-1. Edit `.github/workflows/ci.yml` and raise the threshold to 70 %
-2. Commit on a new branch and open a PR
+Expect the workflow to fail initially because current tests likely don’t reach 70% coverage. Your task is to determine and implement the changes needed to make it pass. This will typically require adding or completing tests to cover untested branches in `prediction_pipeline_demo.py`
 
-You should observe that GitHub Actions workflow job will fail because TODO tests are incomplete and the tests do not cover atleast 70 % of the lines in `prediction_pipeline_demo.py`
-
-### Green PR (Passing)
-
-1. Complete the two TODOs in `tests/test_prediction_pipeline_demo.py`
-2. Push changes to the same PR
-3. GitHub Actions workflow job/CI will pass once coverage ≥ 70%
-4. Merge the PR to main
-
-**Tip:** Always test locally before pushing:
-```bash
-python -m pytest -q --cov=prediction_pipeline_demo --cov-report=term-missing
-```
-
-This demonstrates how CI coverage thresholds enforce quality gates.
-
+Push your updates to the same PR and observe CI turning green once coverage meets or exceeds 70%.
 
 ## Step 3: Add ML Pipeline Step to the current Github Actions Workflow
 
-1. In `.github/workflows/ci.yml`, read the TODO comment and make the necessary modifications.
-2. Commit these changes to a different branch and raise a PR.
-3. Merge the PR to main
+So far, you’ve seen how the workflow runs tests with coverage as one of the steps in the CI pipeline. Now you’ll try adding a new step.
 
-This runs the ML pipeline in CI. Since `Housing.csv` is included, you'll see output like:
-
-```
-Trained model score is: 0.82
-```
+Check  `.github/workflows/ci.yml` and complete the section marked for adding a step for running the demo pipeline end-to-end, so that CI executes `prediction_pipeline_demo.py` and logs the model’s R² score.
 
 ## Step 4: Self-Hosted Runner
 
-Run CI on your own machine instead of GitHub's servers.
+Until now, all workflows have been executed on GitHub-hosted servers. In this step, you will configure CI to run on your own machine using a self-hosted runner.
 
 ### Setup
 
@@ -115,18 +87,16 @@ Run CI on your own machine instead of GitHub's servers.
 
 ### Update Workflow
 
-1. In `.github/workflows/ci.yml`, the workflow is still pointing to the default GitHub-hosted environment. For this lab, the goal is to run the pipeline on the self-hosted runner you set up earlier. Update the configuration so that the job no longer runs on ubuntu-latest but instead targets the self-hosted machine.
+1. Update the workflow so the job runs on your self-hosted runner.
 
 2. Next, replace the "Set up Python" step with:
 ```yaml
 - name: Show Python
   run: python3 --version
 ```
-
 **Note:** Ensure Python 3.11 or 3.12 is installed on your self-hosted runner machine.
 
 Push to your branch to trigger CI. Check Actions logs to verify jobs run on your machine.
-
 
 ## Additional Resources
 
