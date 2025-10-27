@@ -37,11 +37,13 @@ buying credits for a few dollars. If you use a strictly rate limited API, set th
 
 ## Threat Model
 
-We assume that the MCP servers are hosted within the company and attackers will not have access to their code and will not be able to modify it. The attacker cannot add additional MCP servers. We are also using an off-the-shelf LLM and assume that the connection to the LLM is secure and cannot be intercepted or modified. The LLM provider contractually guaranted that the inference data is not stored and not used for training.
+Users interact with the service agent through the web interface. We assume that the MCP servers are hosted within the company and attackers will not have access to their code and will not be able to modify it. The attacker cannot add additional MCP servers. We are also using an off-the-shelf LLM and assume that the connection to the LLM is secure and cannot be intercepted or modified. The LLM provider contractually guaranted that the inference data is not stored and not used for training.
 
 The MCP servers may interface with external systems. While attackers cannot directly modify the database, they may use other systems to modify information, like editing their own name and address on the airline webpage.
 
 The airline wishes to enforce a number of rules strictly, that are described as a policy document in `data/airline/policy.md`.
+
+User IDs are considered personal secrets. An attacker will not be able to know or guess User IDs of other users.
 
 
 
@@ -59,6 +61,7 @@ Finally, change the agent or MCP server to provide guarantees that the following
 - All actions that involve payments (e.g., adding a bag) must be explicitly confirmed by the user. Only confirmed actions can be executed and only exactly as they were confirmed.
 - The agent must not be allowed to lie about actions taken (e.g., issuing a refund if that was not possible). The user must be able to verify which actions were taken.
   
+
 While modifying or adding prompts may increase reliability, it will likely not be sufficient to provide guarantees. We expect solutions to involve changes to the agent implementation, to the user interface, to the tool interface, or to the tool implementation, or multiple of these.
 
 
