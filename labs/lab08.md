@@ -11,18 +11,17 @@ To receive credit for this lab, show your work to the TA during recitation.
 Be able to explain to TA about 
 how Prometheus read the data and deal with resets, counters (open ended)
 what if multiple machines need to syncronize
-
 - [ ] Configure Grafana Dashboard and add visualizations.
 
 
 ## Getting started
 - Ensure Python (preferably 3.8, 3.9, 3.10) and Docker is installed on your machine.
-- Clone the starter code from this [Git repository](https://github.com/XueyingJia/mlip-monitoring-lab) 
+- Clone the starter code from this [Git repository](https://github.com/Michelle-Wang0/lab8_monitoring) 
 - Navigate to this Github folder
 - Install required dependencies
     - `pip install -r requirements.txt`
-- Establish an SSH tunnel to the Kafka broker if not already connected
-    - `ssh -o ServerAliveInterval=60 -L 9092:localhost:9092 tunnel@128.2.204.215 -NTf`
+- Establish an SSH tunnel to the Kafka broker if not already connected: ((find remote_server, user, and password on the Canvas entry for this lab))
+    - `ssh -L <local_port>:localhost:<remote_port> <user>@<remote_server> -NTf`
 
 ## Background
 - Familiarize yourself with the `docker-compose.yaml` and `prometheus.yml` files.
@@ -70,13 +69,17 @@ what if multiple machines need to syncronize
    4. Visualization should be time series. Run query and Apply. 
    ![grafana-2](grafana2.png)
 
-6. Panel 3: Error Rate (%) – Track the percentage of requests that returned an error (non-200 status codes)  
-   1. HINT: Use `request_count_total` and filter labels where `http_status` is not equal to 200.  
-   2. Apply range functions such as `rate` over a 5-minute window and compare error requests to total requests.  
+6. Panel 3: Node CPU usage - Track CPU time consumed in 'system' mode by the node
+   1. HINT: Track rate of `node_cpu_seconds_total`
+
 
 7. Panel 4: 95th Percentile Request Latency – Track high-end request latency over time  
    1. HINT: Use `request_latency_seconds` and explore its `_bucket` form to visualize latency distribution.  
    2. Apply percentile functions to display the 95th percentile latency (p95) of all recommendation requests.  
+
+8. (Optional:) Average Request Latency - Average latency for all recommendation requests
+   1. HINT: Use forms of `request_latency_seconds`. Make use of formula for average= sum/count
+
 
 
 ## Optional: Customize panels
