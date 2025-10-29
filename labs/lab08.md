@@ -7,11 +7,8 @@ To receive credit for this lab, show your work to the TA during recitation.
 
 ## Deliverables
 - [ ] Setup Docker with Prometheus and Grafana.	Modify and Run Kafka Monitoring Script.
-- [ ] Verify Prometheus targets and metrics. Run queries in prometheus.  
-Be able to explain to TA about 
-how Prometheus read the data and deal with resets, counters (open ended)
-what if multiple machines need to syncronize
-- [ ] Configure Grafana Dashboard and add visualizations.
+- [ ] Verify Prometheus targets and metrics. Run queries in Prometheus.  Explain to the TA how Prometheus reads and stores metric data, how it handles counter resets when a service restarts.
+- [ ] Configure Grafana Dashboard and add visualizations. Explain to TA how you would aggregate or synchronize metrics if multiple instances of the same service were running.
 
 
 ## Getting started
@@ -42,7 +39,7 @@ what if multiple machines need to syncronize
 4. Use the Prometheus dashboard's Graph section to explore metrics. Click on the metrics explorer (earth icon) and search for `request_count_total` to visualize total requests with their status.
 5. Feel free to explore various metrics available in metrics explorer in the table/graph format.
 
-![prometheus](prometheus.png)
+![prometheus](https://raw.githubusercontent.com/Michelle-Wang0/lab8_monitoring/refs/heads/main/prometheus.png)
 
 ## Configure Grafana Dashboard for Visualization
 ### Add Data Source in Grafana
@@ -60,14 +57,14 @@ what if multiple machines need to syncronize
    1. Add `request_count_total` as metric, filter label `http_status` and equate to `200`. Make sure that visualization selected is time series. 
    2. You can see the query generated at the bottom. Alternatively, you can write the query using `code` option.
    3. Click on run queries and select Apply. You will see the panel added to dashboard. Click save after every panel.
-   ![grafana-1](grafana1.png)
+   ![grafana-1](https://raw.githubusercontent.com/Michelle-Wang0/lab8_monitoring/refs/heads/main/grafana1.png)
    
 5. Panel 2: Total Recommendation Requests Over Time - Total of rate of requests over time (5 min)
    1. Click on add> visualization. In the queries below, add `request_count_total` as metric. 
    2. Add operations> range functions > rate  with range 5m
    3. Add one more operations> aggregations > sum. 
-   4. Visualization should be time series. Run query and Apply. 
-   ![grafana-2](grafana2.png)
+   4. Visualization should be time series. Run query and Apply.
+   ![grafana-2](https://raw.githubusercontent.com/Michelle-Wang0/lab8_monitoring/refs/heads/main/grafana2.png)
 
 6. Panel 3: Node CPU usage - Track CPU time consumed in 'system' mode by the node
    1. HINT: Track rate of `node_cpu_seconds_total`
