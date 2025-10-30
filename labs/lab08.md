@@ -3,7 +3,7 @@ In this lab, you will gain hands-on experience in monitoring using Prometheus an
 
 You will set up a Prometheus monitoring system, connect it to a Kafka broker, and track key metrics. This practical application will be valuable for your Milestone 3. There are multiple components in this lab, some of which may be new to you, we strongly advise starting early to familiarize yourself. You can refer the screenshots included in this writeup for additional clarity.
 
-To receive credit for this lab, show your work to the TA during recitation.
+To receive credit for this lab, show your work to the TA in your own recitation section.
 
 ## Deliverables
 - [ ] Setup Docker with Prometheus and Grafana.	Modify and Run Kafka Monitoring Script.
@@ -12,12 +12,12 @@ To receive credit for this lab, show your work to the TA during recitation.
 
 
 ## Getting started
-- Ensure Python (preferably 3.8, 3.9, 3.10) and Docker is installed on your machine.
+- Ensure Python (preferably 3.11 or 3.10) and Docker is installed on your machine.
 - Clone the starter code from this [Git repository](https://github.com/Michelle-Wang0/lab8_monitoring) 
 - Navigate to this Github folder
 - Install required dependencies
     - `pip install -r requirements.txt`
-- Establish an SSH tunnel to the Kafka broker if not already connected: ((find remote_server, user, and password on the Canvas entry for this lab))
+- Establish an SSH tunnel to your team project’s Kafka broker, if not already connected (find <remote_server> and <user> in M1's instructions in Canvas):
     - `ssh -L <local_port>:localhost:<remote_port> <user>@<remote_server> -NTf`
 
 ## Background
@@ -34,9 +34,9 @@ To receive credit for this lab, show your work to the TA during recitation.
 
 ## Prometheus Targets and Queries
 1. Verify that all targets are active in Prometheus under Status > Targets.
-2. Kafka metrics are visible at http://localhost:8765, reflecting the metrics you coded in kafka-monitoring.py.
+2. Kafka metrics are visible at http://localhost:8765/metrics, reflecting the metrics you coded in kafka-monitoring.py.
 3. Node exporter metrics are available at http://localhost:9100. These are system / host level metrics.
-4. Use the Prometheus dashboard's Graph section to explore metrics. Click on the metrics explorer (earth icon) and search for `request_count_total` to visualize total requests with their status.
+4. Use the Prometheus dashboard's Graph section to explore metrics. Click on the metrics explorer (earth icon) and search for `request_count_total` to visualize total requests with their status. Then, try `rate(requests_count_total)[30s]`.
 5. Feel free to explore various metrics available in metrics explorer in the table/graph format.
 
 ![prometheus](https://raw.githubusercontent.com/Michelle-Wang0/lab8_monitoring/refs/heads/main/prometheus.png)
@@ -63,7 +63,7 @@ To receive credit for this lab, show your work to the TA during recitation.
    1. Click on add> visualization. In the queries below, add `request_count_total` as metric. 
    2. Add operations> range functions > rate  with range 5m
    3. Add one more operations> aggregations > sum. 
-   4. Visualization should be time series. Run query and Apply.
+   4. Visualization should be time series. Run query and Apply. 
    ![grafana-2](https://raw.githubusercontent.com/Michelle-Wang0/lab8_monitoring/refs/heads/main/grafana2.png)
 
 6. Panel 3: Node CPU usage - Track CPU time consumed in 'system' mode by the node
@@ -77,11 +77,9 @@ To receive credit for this lab, show your work to the TA during recitation.
 8. (Optional:) Average Request Latency - Average latency for all recommendation requests
    1. HINT: Use forms of `request_latency_seconds`. Make use of formula for average= sum/count
 
-
-
 ## Optional: Customize panels
-Customize your panels with titles and labels, and adjust the visualizations for better clarity and insight. 
-Experiment with the Grafana interface to make your dashboard more intuitive. Refer this for [dashboard](https://grafana.com/grafana/dashboards/) configurations.
+- Customize your panels with titles and labels, and adjust the visualizations for better clarity and insight. Please use proper title, axis labels, and axis units to make the visualization clear.
+- Experiment with the Grafana interface to make your dashboard more intuitive. Refer this for [dashboard](https://grafana.com/grafana/dashboards/) configurations. 
 
 ## FAQ:
 1. Q: How to establish an SSH tunnel to the Kafka broker? \
@@ -102,3 +100,4 @@ Experiment with the Grafana interface to make your dashboard more intuitive. Ref
 
 
 Note: If you're not seeing any metric data on Prometheus or Grafana, please check if the kafka topic events are not throwing an error. If the topic has events that do not respond back with 200 status code, change the topic to some other topic `movielogN`
+
