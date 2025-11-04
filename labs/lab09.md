@@ -1,17 +1,12 @@
-# Lab 9: Orchestrating ML training and Inference with Kubernetes
+# Lab: Orchestrating ML training and Inference with Kubernetes
 In this lab, you'll leverage Kubernetes to enable continuous model training and inference, configure a Python-based load balancer to distribute traffic across the backend inference instances, and experiment with [container lifecycle hooks](https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/) in Kubernetes.
 
 
-## Objectives
-
-- Configure model training to occur at a continuous interval using a cron spec
-- Deploy multiple services in Kubernetes for a distributed backend application.
-- Set up a Python-based load balancer to route traffic across backend instances.
 
 ## Deliverables
 
 - [ ] Show the TA that inference occurs with continuously updating models on a distributed backend
-- [ ] Show to the TA what gets logged on container shutdown from the backend/inference service. Explain which container lifecycle hook gets used.
+- [ ] Show to the TA what gets logged on container shutdown from the backend/inference service. Explain what container lifecycle hooks are and when they might be used.
 - [ ] Explain to the TA how Kubernetes might be used in Milestone 3
 
 
@@ -32,33 +27,26 @@ kubectl get po -A
 1. In `model_trainer.py` implement the code to train the model given training data `X` and labels `Y`
 2. Push your model training image. For details on how to do that, see [Build and Push the Docker Image](./README.md#build-and-push-the-docker-image)
 3. In `trainer_deployment.yaml` configure the cron so that the model training runs at a periodic interval (for demonstration purposes keep it fairly frequent; every 1-2 minutes)  
+```
+kubectl apply -f trainer-deployment.yaml
+```
+At this point, you should be able to see the continuously running training `model-trainer-job` CronJob using the Minikube dashboard. For instructions on doing that see [Troubleshooting](#troubleshooting).
 
 ## Task 2: Implement the Backend Inference Service and Load Balancer
 1. In `backend.py` implement the code changes to predict based on the input.
 2. In `load_balancer.py` implement the code changes to route traffic for both the `POST` and `GET` endpoints.
 3. Push your backend and load balancer images to the Docker registry. For details on how to do that, see [Build and Push the Docker Image](./README.md#build-and-push-the-docker-image)
 
-## Task 3: Implement the lifecycle hook and deploy services in Kubernetes
-1. Configure the lifecycle hook to send a SIGTERM on shutdown to `backend.py` in `backend-deployment.yaml`
-2. **CRUCIAL**: Ensure you have the correct DockerHub username/image name in all 3 of the following files: `load-balancer-deployment.yaml`, `backend-deployment.yaml`, `trainer-deployment.yaml`
-3. Deploy services in the Kubernetes cluster using: 
+At this point, you should be able to verify that you can reach the load balancer and can see the inference happening on distributed backend. For this task/step comment out the `lifecycle` hook in `backend-deployment.yaml` (or just skip this step and do the full implementation of `backend-deployment.yaml` at the next step).  
+Then apply the manifests for the backend and the load balancer:
 ```
-kubectl apply -f trainer-deployment.yaml
 kubectl apply -f backend-deployment.yaml
 kubectl apply -f load-balancer-deployment.yaml
 ```
-
-Now that all tasks are complete, you should be able to verify and demonstrate all deliverables using [this postman collection](./mlip-kubernetes.postman_collection.json) AND/OR the following commands. For obtaining the correct port, see [Accessing the Load Balancer](#accessing-the-load-balancer):    
-
-```
-# for verifying shutdown hooks
-kubectl rollout restart deployment/flask-backend-deployment
-```
-
+Verify using [this postman collection](./mlip-kubernetes.postman_collection.json) AND/OR the following `cURL` commands. For obtaining the correct port, see [Accessing the Load Balancer](#accessing-the-load-balancer). You should see the `host` parameter in the response body vary across requests: 
 ```
 curl --location --request GET '127.0.0.1:<some-port-here>/model-info'
 ```
-
 
 ```
 curl --location --request POST '127.0.0.1:<some-port-here>/predict' \
@@ -71,6 +59,24 @@ curl --location --request POST '127.0.0.1:<some-port-here>/predict' \
     "user_id": 34
 }'
 ```
+
+## Task 3: Implement the lifecycle hook and re-deploy service in Kubernetes
+1. Configure the lifecycle hook to send a SIGTERM on shutdown to `backend.py` in `backend-deployment.yaml`
+2. **CRUCIAL**: Ensure you have the correct DockerHub username/image name in all 3 of the following files: `load-balancer-deployment.yaml`, `backend-deployment.yaml`, `trainer-deployment.yaml`
+3. Re-deploy the backend: 
+```
+kubectl apply -f backend-deployment.yaml
+```
+
+Now that this task is complete you should be able to demonstrate the behavior of te lifecycle hook:    
+
+```
+# for verifying shutdown hooks
+kubectl rollout restart deployment/flask-backend-deployment
+# then in a separate process
+kubectl logs -l app=flask-backend -f
+```
+
 ### 
 
 
