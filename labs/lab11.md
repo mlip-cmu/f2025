@@ -10,9 +10,7 @@ In this lab, you'll gain hands-on experience with DVC (Data Version Control), a 
 
 - **Deliverable 2**: Create a multi-stage DVC pipeline  with preprocessing, training, and evaluation stages. Execute the pipeline and show the dependency graph. Explain to the TA how DVC determines which stages need to re-run when you change hyperparameters.
 
-- **Deliverable 3**: Run 3+ experiments with different hyperparameters, compare results, and demonstrate pushing experiments to remote storage. Explain to the TA when you would use DVC versus W&B for experiment tracking, and how they complement each other.
-
-Additionally, mention how DVC could be used for the team project, specifically with the data stream and other design considerations.
+- **Deliverable 3**: Run 3+ experiments with different hyperparameters, compare results, and demonstrate pushing experiments to remote storage. Explain to the TA when you would use DVC versus W&B for experiment tracking, and how they complement each other. Additionally, mention how DVC could be used for the team project, specifically with the data stream and other design considerations.
 
 ## Getting Started
 
